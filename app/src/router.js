@@ -8,6 +8,10 @@ import Dog from "./components/ihome/dog.vue"
 import Cat from "./components/ihome/cat.vue"
 import Mini from "./components/ihome/mini.vue"
 import Aquatic from "./components/ihome/aquatic.vue"
+import Teddy from "./components/message/Teddy.vue"
+import Td from "./components/message/Td.vue"
+import Golden from "./components/message/Golden.vue"
+
 
 //login(彦东)
 //1:引入自定义组件 login.vue
@@ -20,6 +24,7 @@ import myself from "./components/main/myself.vue"
 import int from "./components/login/int.vue"
 import protocol from "./components/login/protocol.vue"
 import att from "./components/login/att.vue"
+import set from "./components/login/set.vue"
 
 
 
@@ -42,9 +47,6 @@ import Counselor from "./components/message/Counselor.vue"
 import Pom from "./components/message/Pom.vue"
 import Ensure from "./components/message/Ensure.vue"
 import Store from "./components/message/Store.vue"
-import Teddy from "./components/message/Teddy.vue"
-import Td from "./components/message/Td.vue"
-import Golden from "./components/message/Golden.vue"
 import Gd from "./components/message/Gd.vue"
 import Ennly from "./components/message/Ennly.vue"
 
@@ -76,6 +78,7 @@ export default new Router({
     { path: '/my', component: my },
     { path: '/wu', component: wu },
     { path: '/att', component: att },
+    { path: '/set', component: set },
 
     { path: '/MiniFive', component: MiniFive },
     { path: '/MiniTwo', component: MiniTwo },

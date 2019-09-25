@@ -1,14 +1,19 @@
 <template>
   <div>
-    <titleBar title="狗狗" ></titleBar>
+    <titleBar title="狗狗"></titleBar>
     <div class="product-app">
-    <div class="goods-item" v-for="(item,index) of arr" :key="index">
-      <!-- 1.宠物图片 -->
-      <img :src="require(`../../assets/pet/dog/${item.dimg}`)" />
-      <!-- <img :src="`require(http://127.0.0.1:8080/pet1/dog/d01.jpg)`" class="noe"> -->
-      <!-- 2.宠物名称 -->
-      <p>{{item.ptype}}</p>
-    </div>
+      <div class="goods-item" v-for="(item,index) of arr" :key="index">
+        <!-- 1.宠物图片 -->
+        <img
+          :src="require(`../../assets/pet/dog/${item.dimg}`)"
+          :data-set="index"
+          @click="jump(index)"
+          :key="index"
+        >
+        <!-- <img :src="`require(http://127.0.0.1:8080/pet1/dog/d01.jpg)`" class="noe"> -->
+        <!-- 2.宠物名称 -->
+        <p>{{item.ptype}}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -21,7 +26,7 @@ export default {
   },
   data() {
     return {
-      arr: "",
+      arr: ""
     };
   },
   methods: {
@@ -36,6 +41,10 @@ export default {
         // this.arr = JSON.stringify(res.data);
         this.arr = res.data;
       });
+    },
+    jump(index) {
+      console.log(index);
+      this.$router.push({ path: "/Td", query: { pid: index } });
     }
   },
   created() {

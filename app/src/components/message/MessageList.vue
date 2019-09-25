@@ -12,6 +12,7 @@
         :msg1="item.title"
         :msg2="item.subtitle"
         :msg3="item.time"
+        :data-set="index"
       ></message>
     </div>
   </div>
@@ -34,21 +35,24 @@ export default {
   },
   methods: {
     jumpNews(e) {
-      var index = $(e.target).index();
-      //功能:跳转页面
-      switch (index) {
-        case 0: //功能:跳转页面
-          this.$router.push("NewsList");
-          break;
-        case 1: //功能:跳转页面
-          this.$router.push("Pom");
-          break;
-        case 2: //功能:跳转页面
-          this.$router.push("official");
-          break;
-        case 3: //功能:跳转页面
-          this.$router.push("Counselor");
-          break;
+      if (e.target.nodeName == "DIV") {
+        var index = $(e.target).index();
+        console.log(e.target.dataset.set);
+        //功能:跳转页面
+        switch (index) {
+          case 0: //功能:跳转页面
+            this.$router.push("NewsList");
+            break;
+          case 1: //功能:跳转页面
+            this.$router.push("Pom");
+            break;
+          case 2: //功能:跳转页面
+            this.$router.push("official");
+            break;
+          case 3: //功能:跳转页面
+            this.$router.push("Counselor");
+            break;
+        }
       }
     }
   }

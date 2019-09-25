@@ -5,11 +5,11 @@
     <!-- 我的 -->
     <div>
       <h3 class="my">我的</h3>
-      <img class="img1" src="../../assets/myself/1.png" />
+      <img class="img1" src="../../assets/myself/1.png" @click="xx">
     </div>
     <!-- 头像 -->
     <div class="head" @click="phone">
-      <img class="img2" :src="require(`../../assets/myself/2.png`)" />
+      <img class="img2" :src="require(`../../assets/myself/2.png`)">
       <div class="head_text">
         <h4 ref="oq">点击头像登录</h4>
         <span>宠物市场购宠、售宠专业有保障</span>
@@ -29,20 +29,20 @@
     <!-- 付款信息 -->
     <div class="info">
       <div v-for="(item,i) of temp" @click="router(i)" :key="i">
-        <img :src="require(`../../assets/myself/${i+3}.png`)" />
+        <img :src="require(`../../assets/myself/${i+3}.png`)">
         <span>{{item}}</span>
       </div>
     </div>
     <!-- 导航信息 -->
-    <div class="nav">
+    <div class="nav" @click="pro">
       <div v-for="(item,i) of nav" :key="i">
         <span>{{item}}</span>
-        <img src="../../assets/myself/8.png" alt />
+        <img src="../../assets/myself/8.png" alt>
       </div>
     </div>
     <!-- 发布黄色圆 -->
-    <div class="radius">
-      <img src="../../assets/myself/9.png" alt />
+    <div class="radius" @click="att">
+      <img src="../../assets/myself/9.png" alt>
       <span>发布</span>
     </div>
   </div>
@@ -62,25 +62,48 @@ export default {
     // this.check();
   },
   methods: {
+    pro(e) {
+      if (e.target.innerHTML === "购宠协议") {
+        if (window.sessionStorage.uid) {
+          // 跳转int积分页面
+          this.$router.push("/protocol");
+        } else {
+          // 未登录跳转注册页面
+          this.$router.push("/phone");
+        }
+      }
+    },
     wyd() {
       // 创建url请求服务器地址
       var url = "wyd";
-      var id=window.sessionStorage.uid//1
-      console.log(id)
-      this.axios.get(url,{params:{id:id}}).then(res => {
-        console.log(res.data)
+      var id = window.sessionStorage.uid; //1
+      // console.log(id);
+      this.axios.get(url, { params: { id: id } }).then(res => {
+        // console.log(res.data);
         this.name = res.data[0];
-        console.log(this.name);
+        // console.log(this.name);
         // ref更改h4内容
-          var h4=this.$refs.oq;
-          h4.innerHTML=this.name.iname;
-          // 更改头像
-          var img2 = document.getElementsByClassName("img2")[0];
-          img2.setAttribute("src",require(`../../assets/myself/${this.name.uimg}`));
-          // 更改优惠券
-          var p1 = document.getElementsByClassName("p1")[0];
-          this.content=`${this.name.iquan}张`;
+        var h4 = this.$refs.oq;
+        h4.innerHTML = this.name.iname;
+        // 更改头像
+        var img2 = document.getElementsByClassName("img2")[0];
+        img2.setAttribute(
+          "src",
+          require(`../../assets/myself/${this.name.uimg}`)
+        );
+        // 更改优惠券
+        var p1 = document.getElementsByClassName("p1")[0];
+        this.content = `${this.name.iquan}张`;
       });
+    },
+    att() {
+      if (window.sessionStorage.uid) {
+        // 跳转att积分页面
+        this.$router.push("att");
+      } else {
+        // 未登录跳转注册页面
+        this.$router.push("/phone");
+      }
     },
     int() {
       if (window.sessionStorage.uid) {
@@ -100,7 +123,6 @@ export default {
     },
     check() {
       if (window.sessionStorage.uid) {
-  
         this.wyd();
       }
     },
@@ -112,6 +134,9 @@ export default {
         // 未登录跳转注册页面
         this.$router.push("/phone");
       }
+    },
+    xx() {
+      this.$router.push("/set");
     }
   },
   data() {

@@ -3,13 +3,13 @@
     <!-- 设置 -->
     <div class="head">
       <h3>设置</h3>
-      <img class="img1" src="../../assets/myself/10.png" alt />
+      <img class="img1" src="../../assets/myself/10.png" @click="xx">
     </div>
     <!-- 导航信息 -->
     <div class="nav" @click="a">
       <div v-for="(item,i) of nav" :key="i" :data-set="i">
         <span>{{item}}</span>
-        <img src="../../assets/myself/8.png" alt />
+        <img src="../../assets/myself/8.png" alt>
       </div>
     </div>
   </div>
@@ -17,19 +17,22 @@
 
 <script>
 export default {
-    data(){
-        return{
-            nav:["修改密码","帮助反馈","关于我们"]
-        }
+  data() {
+    return {
+      nav: ["修改密码", "帮助反馈", "关于我们"]
+    };
+  },
+  methods: {
+    a(e) {
+      if (e.target.dataset.set == 0) {
+        this.$router.push("/forget");
+      }
     },
-    methods: {
-        a(e){
-            if(e.target.dataset.set==0){
-                this.$router.push("/forget")
-            }
-        }
-    },
-}
+    xx() {
+      this.$router.go(-1);
+    }
+  }
+};
 </script>
 
 <style scoped>

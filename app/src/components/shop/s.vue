@@ -1,7 +1,7 @@
 <template>
   <div @click="itemClick(sid)">
     <!--h3>Message.vue 消息组件</h3-->
-    <div class="rootstyle">
+    <div class="rootstyle" @click="xx">
       <div class="left">
         <img :src="simg" class="imgstyle">
         <p class="uname1">{{uname}}</p>
@@ -90,6 +90,9 @@ export default {
     clickitem(id) {
       console.log(id);
     },
+    xx() {
+      this.$router.push("Store")
+    },
     //接口
     shop2() {
       var url = "shop2";
@@ -161,7 +164,7 @@ export default {
   top: 0.9rem;
   left: 0.2rem;
   background: red;
-  padding:0.02rem 0.06rem 0.02rem 0.06rem;
+  padding: 0.02rem 0.06rem 0.02rem 0.06rem;
   border-radius: 0.2rem;
 }
 .zhong,
@@ -171,7 +174,7 @@ export default {
 }
 .zhong {
   width: 5rem;
-  margin-bottom:0.25rem;
+  margin-bottom: 0.25rem;
 }
 .right {
   width: 1.6rem;
@@ -186,9 +189,9 @@ export default {
   font-weight: bold;
 }
 .place1 {
-  padding:0 !important;
+  padding: 0 !important;
   font-size: 0.05rem;
-  margin-left:0.1rem
+  margin-left: 0.1rem;
 }
 .number1 {
   margin-left: 0.25rem;
@@ -203,6 +206,6 @@ export default {
 }
 .itemstyle {
   height: 4.3rem;
-  border-bottom: 0.2rem solid rgba(206, 204, 204,0.7);
+  border-bottom: 0.2rem solid rgba(206, 204, 204, 0.7);
 }
 </style>
